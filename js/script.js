@@ -24,7 +24,8 @@ const quotes = [
   },
   {
     quote: "Don't trade your authenticity for approval.",
-    source: "Kanye West"
+    source: "Kanye West",
+    tag: "Motivational Messages"
   },
   { quote: "Some sincerely wish for more power in order to do good, but only a few individuals are good enough to be powerful.",
     source: "Neal A. Maxwell",
@@ -34,6 +35,7 @@ const quotes = [
 
 //The function to "pick out" a random quote.
 const getRandomQuote = () => {
+  //used parts of the getRandomNumber function but adapted it to only go to the length of how many quotes there are.
   let randomNumber = Math.floor( Math.random() * quotes.length);
   let randomQuote = quotes[randomNumber];
   return randomQuote;
@@ -50,12 +52,13 @@ const printQuote = () => {
   if (randomQuoteObject.year) {
     html += `<span class="year"> ${randomQuoteObject.year} </span>`;
   }
+  if (randomQuoteObject.tag) {
+    html += `<span class="tag"> | ${randomQuoteObject.tag} </span>`;
+  }
   html += `</p>`;
   document.getElementById('quote-box').innerHTML = html;
   return html;
 };
-
-
 
 /***
  * click event listener for the print quote button
